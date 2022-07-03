@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MdShoppingCart, MdAdd, MdLogout } from "react-icons/md"
-import Avatar from "./img/avatar.png"
+import Avatar from "../img/avatar.png"
 import { motion } from "framer-motion"
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from '../firebase.config'

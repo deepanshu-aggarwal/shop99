@@ -1,7 +1,7 @@
 import React from "react";
-import Delivery from "./img/delivery.png";
-import HeroBg from "./img/heroBg.png";
-import I1 from "./img/i1.png";
+import Delivery from "../img/delivery.png";
+import HeroBg from "../img/heroBg.png";
+import I1 from "../img/i1.png";
 import { heroData } from "../utils/data";
 
 
