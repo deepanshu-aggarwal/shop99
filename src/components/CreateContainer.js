@@ -8,6 +8,7 @@ import { storage } from '../firebase.config'
 import { getAllItems, saveItem } from '../utils/firebaseFunctions'
 import { useStateValue } from '../context/StateProvider'
 import { actionType } from '../context/reducer'
+import {FaRupeeSign} from 'react-icons/fa'
 
 const CreateContainer = () => {
   const [title, setTitle] = useState('')
@@ -214,7 +215,7 @@ const CreateContainer = () => {
               className='w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor' />
           </div>
           <div className='w-full py-2 border-b border-gray-300 flex items-center gap-2'>
-            <MdAttachMoney className='text-gray-700 text-2xl' />
+            <FaRupeeSign className='text-gray-700 text-lg' />
             <input 
               type='text' 
               required 
