@@ -5,10 +5,11 @@ import {MdChevronLeft, MdChevronRight} from 'react-icons/md'
 import RowContainer from './RowContainer'
 import {useStateValue} from '../context/StateProvider'
 import MenuContainer from './MenuContainer'
+import CartContainer from './CartContainer'
 
 const MainContainer = () => {
 
-  const [{foodItems}, dispatch] = useStateValue()
+  const [{foodItems, cartShow}, dispatch] = useStateValue()
   const [scrollVal, setScroll] = useState(0)
   
   useEffect(()=> { 
@@ -27,10 +28,15 @@ const MainContainer = () => {
             <motion.div whileTap={{ scale: 0.75 }} className='w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer hover:shadow-lg flex items-center justify-center' onClick={()=> setScroll(200)}><MdChevronRight className='text-lg text-white' /></motion.div>
           </div>
         </div>
-        <RowContainer scrollVal={scrollVal} flag={true} data={foodItems?.filter(item => item.category === "icecreams")}/>
+        <RowContainer 
+          scrollVal={scrollVal} 
+          flag={true} 
+          data={foodItems?.filter(item => item.category === "icecreams")}/>
       </section>
 
       <MenuContainer />
+
+      {cartShow &&  (<CartContainer/>)}
     </div>
   )
 }
