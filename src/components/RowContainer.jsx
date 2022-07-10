@@ -30,14 +30,14 @@ const RowContainer = ({ flag, data, scrollVal }) => {
   },[items])
 
   return (
-    <div ref={rowContainer} className={`w-full my-12 scroll-smooth
+    <div ref={rowContainer} className={`w-full my-12 scroll-smooth flex
     ${flag ? `overflow-x-scroll scrollbar-none` : `overflow-x-hidden flex-wrap`}`}>
       {data && data.length > 0?
 
         (data.map(item => (
           <div
             key={item.id}
-            className='w-275 h-[200px] min-w-[275px] md:w-300 md:min-w-[300px] my-12 bg-cardOverlay rounded-lg p-2 backdrop-blur-lg   hover:drop-shadow-lg flex flex-col items-center justify-evenly relative '>
+            className='w-275 h-[200px] min-w-[275px] md:w-300 md:min-w-[300px] mr-2 my-12 bg-cardOverlay rounded-lg p-2 backdrop-blur-lg   hover:drop-shadow-lg flex flex-col items-center justify-evenly relative '>
             <div className='w-full flex items-center justify-between'>
               <motion.div
                 className="w-40 h-40 -mt-8 drop-shadow-2xl"
