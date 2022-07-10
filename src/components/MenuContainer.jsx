@@ -2,12 +2,13 @@ import React from 'react'
 import { IoFastFood } from 'react-icons/io5'
 import { categories } from '../utils/data'
 import { motion } from 'framer-motion'
-
+import RowContainer from './RowContainer'
+import { useStateValue } from '../context/StateProvider'
 const MenuContainer = () => {
 
   const [filter, setfilter] = React.useState('chicken')
 
-
+  const [{foodItems}, dispatch] = useStateValue()
 
   return (
     <section className='w-full my-6' id='menu'>
@@ -16,7 +17,7 @@ const MenuContainer = () => {
 
         <div className='w-full flex items-center justify-start lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none'>
           {categories && categories.map(item => (
-            <motion.div whileTap={{scale:0.6}} key={item.id} className={`group ${filter === item.urlParamName ? 'bg-cartNumBg' : 'bg-card'} hover:bg-red-600 w-24 min-w-[94px] h-28 cursor-pointer rounded-lg drop-shadow-xl flex flex-col gap-3 items-center justify-center duration-150 transition-all ease-in-out `}
+            <motion.div whileTap={{ scale: 0.6 }} key={item.id} className={`group ${filter === item.urlParamName ? 'bg-cartNumBg' : 'bg-card'} hover:bg-red-600 w-24 min-w-[94px] h-28 cursor-pointer rounded-lg drop-shadow-xl flex flex-col gap-3 items-center justify-center duration-150 transition-all ease-in-out `}
               onClick={() => setfilter(item.urlParamName)}>
               <div className={`w-10 h-10 rounded-full shadow-lg ${filter === item.urlParamName
                 ? "bg-white"
@@ -33,6 +34,14 @@ const MenuContainer = () => {
                 } group-hover:text-white`}>{item.name}</p>
             </motion.div>
           ))}
+        </div>
+
+        <div className='w-full'>
+          <RowContainer 
+            flag={true}
+            data={foodItems?.filter(item => item.category === filter)}
+          />
+
         </div>
       </div>
     </section>
