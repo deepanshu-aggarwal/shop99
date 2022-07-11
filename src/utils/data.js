@@ -12,6 +12,7 @@ export const heroData = [
     imageSrc: I1,
   },
   {
+    
     id: 2,
     name: "Strawberries",
     decp: "Fresh Strawberries",
