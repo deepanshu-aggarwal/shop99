@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import {MdFastfood, MdCloudUpload, MdDelete, MdFoodBank, MdAttachMoney} from 'react-icons/md'
+import {MdFastfood, MdCloudUpload, MdDelete, MdFoodBank, MdStar, Md1K} from 'react-icons/md'
 import { categories } from '../utils/data'
 import Loader from './Loader'
 import {deleteObject, getDownloadURL, ref, uploadBytesResumable} from 'firebase/storage'
@@ -21,6 +21,9 @@ const CreateContainer = () => {
   const [msg, setMsg] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [{foodItems}, dispatch] = useStateValue()
+  const [description, setDescription] = useState('')
+  const [rating, setRating] = useState('')
+  const [weight, setWeight] = useState('')
 
   const uploadImage = (e) => {
     setIsLoading(true)
@@ -69,7 +72,7 @@ const CreateContainer = () => {
   const saveDetails = () => {
     setIsLoading(true)
     try{
-      if((!title || !calories || !imageAsset || !price || !category)){
+      if((!title || !calories || !imageAsset || !price || !category || !description || !weight || !rating)){
         setFields(true)
         setMsg("Required fields can't be empty")
         setAlertStatus('danger')
@@ -85,7 +88,10 @@ const CreateContainer = () => {
           category: category,
           calories: calories,
           qty: 1,
-          price: price
+          price: price,
+          description: description,
+          weight: weight,
+          rating: rating
         }
         saveItem(data)
         setIsLoading(false)
@@ -116,6 +122,9 @@ const CreateContainer = () => {
     setCalories('')
     setPrice('')
     setCategory('Select Category')
+    setDescription('')
+    setWeight('')
+    setRating('')
   }
 
   const fetchData = async() => {
@@ -156,12 +165,12 @@ const CreateContainer = () => {
           <select 
             className='outline-none w-full text-base border-b-2 border-gray-200 p-2 rounded-md cursor-pointer'
             onChange={(e) => setCategory(e.target.value)}>
-            <option value='other' className='bg-white hidden'>Select Category</option>
+            <option value='other' className='bg-transparent hidden'>Select Category</option>
             {
               categories && categories.map((item) => (
                 <option 
                   key={item.id} 
-                  className='text-base border-0 outline-none capitalize bg-white text-headingColor'
+                  className='text-base border-0 outline-none capitalize bg-transparent text-headingColor'
                   value={item.urlParamName}
                 >  
                   {item.name}
@@ -203,6 +212,9 @@ const CreateContainer = () => {
               </>}
             </>}
         </div>
+        <div className='w-full border border-gray-300 rounded-md'>
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder='Description' className='p-4 h-full w-full bg-transparent'></textarea>
+        </div>
         <div className='w-full flex flex-col md:flex-row items-center gap-3'>
           <div className='w-full py-2 border-b border-gray-300 flex items-center gap-2'>
             <MdFoodBank className='text-gray-700 text-2xl' />
@@ -222,6 +234,26 @@ const CreateContainer = () => {
               placeholder='Price'
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+              className='w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor' />
+          </div>
+          <div className='w-full py-2 border-b border-gray-300 flex items-center gap-2'>
+            <Md1K className='text-gray-700 text-lg' />
+            <input 
+              type='text' 
+              required 
+              placeholder='Weight'
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+              className='w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor' />
+          </div>
+          <div className='w-full py-2 border-b border-gray-300 flex items-center gap-2'>
+            <MdStar className='text-gray-700 text-lg' />
+            <input 
+              type='text' 
+              required 
+              placeholder='Rating'
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
               className='w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor' />
           </div>
         </div>

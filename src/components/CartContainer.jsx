@@ -81,7 +81,7 @@ const CartContainer = () => {
               <p className="text-gray-400 text-lg">₹ {tot}</p>
             </div>
             <div className="w-full flex items-center justify-between">
-              <p className="text-gray-400 text-lg">Delivery</p>
+              <p className="text-gray-400 text-lg">Tax</p>
               <p className="text-gray-400 text-lg">₹{(tot * 12.5) / 100}</p>
             </div>
 

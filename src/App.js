@@ -6,10 +6,11 @@ import { useStateValue } from './context/StateProvider';
 import { getAllItems } from './utils/firebaseFunctions';
 import { useEffect } from 'react';
 import { actionType } from './context/reducer';
+import DetailProductPage from './components/DetailProductPage';
 
 
 function App() {
-  const [{}, dispatch] = useStateValue()
+  const [, dispatch] = useStateValue()
 
   const fetchData = async() => {
     await getAllItems().then(data => {
@@ -30,13 +31,13 @@ function App() {
         <Header />
         <main className="mt-14 md:mt-16 px-4 md:px-16 py-4 w-full" style={{marginTop:58}}>
           <Routes>
-            <Route path='/' element={<MainContainer />}> </Route>
-            <Route path='/createItem' element={<CreateContainer />}> </Route>
-            <Route path='/checkout' element={<Checkout />}> </Route>
+            <Route path='/' element={<MainContainer />} />
+            <Route path='/createItem' element={<CreateContainer />} />
+            <Route path='/product/:productId' element={<DetailProductPage />} />
+            <Route path='/checkout' element={<Checkout />} />
           </Routes>
         </main>
       </div>
-    
     </AnimatePresence>
   );
 }
