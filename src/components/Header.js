@@ -38,7 +38,6 @@ const Header = () => {
             user: null
         })
     }
-    // {console.log("img", user?.photoURL)}
     const showCart = () => {
         dispatch({
             type: actionType.SET_CART_SHOW,

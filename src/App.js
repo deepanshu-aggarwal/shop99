@@ -1,5 +1,5 @@
 import './App.css';
-import { Header, CreateContainer, MainContainer } from "./components"
+import { Header, CreateContainer, MainContainer, Checkout } from "./components"
 import { Route, Routes } from "react-router-dom"
 import { AnimatePresence } from "framer-motion"
 import { useStateValue } from './context/StateProvider';
@@ -34,6 +34,7 @@ function App() {
             <Route path='/' element={<MainContainer />} />
             <Route path='/createItem' element={<CreateContainer />} />
             <Route path='/product/:productId' element={<DetailProductPage />} />
+            <Route path='/checkout' element={<Checkout />} />
           </Routes>
         </main>
       </div>
