@@ -1,11 +1,10 @@
 import React, { useEffect, useRef , useState} from 'react'
 import { motion } from 'framer-motion'
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 import { MdShoppingBasket } from 'react-icons/md'
-import { categories } from '../utils/data'
 import NotFound from '../img/NotFound.svg'
 import { useStateValue } from '../context/StateProvider'
 import { actionType } from '../context/reducer'
+import { Link } from 'react-router-dom'
 
 const RowContainer = ({ flag, data, scrollVal }) => {
   const rowContainer = useRef()
@@ -13,7 +12,6 @@ const RowContainer = ({ flag, data, scrollVal }) => {
   const [{cartItems}, dispatch] = useStateValue()
 
   const addToCart = () => {
-    
     dispatch({
       type: actionType.SET_CART_ITEMS,
       cartItems: items
@@ -33,16 +31,16 @@ const RowContainer = ({ flag, data, scrollVal }) => {
     <div ref={rowContainer} className={`w-full my-12 scroll-smooth flex
     ${flag ? `overflow-x-scroll scrollbar-none` : `overflow-x-hidden flex-wrap`}`}>
       {data && data.length > 0?
-
         (data.map(item => (
           <div
-            key={item.id}
-            className='w-275 h-[200px] min-w-[275px] md:w-300 md:min-w-[300px] mr-2 my-12 bg-cardOverlay rounded-lg p-2 backdrop-blur-lg   hover:drop-shadow-lg flex flex-col items-center justify-evenly relative '>
+          to={`/product/${item.id}`}
+          key={item.id}
+          className='w-275 h-[200px] min-w-[275px] md:w-300 md:min-w-[300px] mr-2 my-12 bg-cardOverlay rounded-lg p-2 backdrop-blur-lg hover:drop-shadow-lg flex flex-col items-center justify-evenly relative '>
             <div className='w-full flex items-center justify-between'>
               <motion.div
                 className="w-40 h-40 -mt-8 drop-shadow-2xl"
                 whileHover={{ scale: 1.2 }}
-              >
+                >
                 <img
                   src={item?.imageURL}
                   alt=""
