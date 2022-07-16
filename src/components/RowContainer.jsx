@@ -33,11 +33,12 @@ const RowContainer = ({ flag, data, scrollVal }) => {
       {data && data.length > 0?
         (data.map(item => (
           <div
-          to={`/product/${item.id}`}
+          
           key={item.id}
           className='w-275 h-[200px] min-w-[275px] md:w-300 md:min-w-[300px] mr-2 my-12 bg-cardOverlay rounded-lg p-2 backdrop-blur-lg hover:drop-shadow-lg flex flex-col items-center justify-evenly relative '>
             <div className='w-full flex items-center justify-between'>
-              <motion.div
+              <Link
+                to={`/product/${item.id}`}
                 className="w-40 h-40 -mt-8 drop-shadow-2xl"
                 whileHover={{ scale: 1.2 }}
                 >
@@ -46,7 +47,7 @@ const RowContainer = ({ flag, data, scrollVal }) => {
                   alt=""
                   className="w-full h-full object-contain"
                 />
-              </motion.div>
+              </Link>
               <motion.div 
               onClick={() => setItems([...cartItems, item])} whileTap={{ scale: 0.75 }} className='w-8 h-8 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md'>
                 <MdShoppingBasket className='text-white ' />
