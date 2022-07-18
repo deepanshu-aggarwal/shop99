@@ -1,5 +1,5 @@
 import './App.css';
-import { Header, CreateContainer, MainContainer, Checkout } from "./components"
+import { Header, CreateContainer, MainContainer, Checkout, Service, About } from "./components"
 import { Route, Routes } from "react-router-dom"
 import { AnimatePresence } from "framer-motion"
 import { useStateValue } from './context/StateProvider';
@@ -7,6 +7,7 @@ import { getAllItems } from './utils/firebaseFunctions';
 import { useEffect } from 'react';
 import { actionType } from './context/reducer';
 import DetailProductPage from './components/DetailProductPage';
+import SuccessFull from './components/SuccessFull';
 
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
             <Route path='/createItem' element={<CreateContainer />} />
             <Route path='/product/:productId' element={<DetailProductPage />} />
             <Route path='/checkout' element={<Checkout />} />
+            <Route path='/success' element={<SuccessFull />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/service' element={<Service />} />
           </Routes>
         </main>
       </div>

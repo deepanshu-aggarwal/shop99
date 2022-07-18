@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom'
 
 const RowContainer = ({ flag, data, scrollVal }) => {
   const rowContainer = useRef()
-  const [items, setItems] = useState([])
   const [{cartItems}, dispatch] = useStateValue()
-
+  const [items, setItems] = useState(cartItems)
   const addToCart = () => {
+    
     dispatch({
       type: actionType.SET_CART_ITEMS,
       cartItems: items
@@ -48,6 +48,7 @@ const RowContainer = ({ flag, data, scrollVal }) => {
                   className="w-full h-full object-contain"
                 />
               </Link>
+
               <motion.div 
               onClick={() => setItems([...cartItems, item])} whileTap={{ scale: 0.75 }} className='w-8 h-8 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md'>
                 <MdShoppingBasket className='text-white ' />
@@ -62,7 +63,7 @@ const RowContainer = ({ flag, data, scrollVal }) => {
                 <p className='text-lg text-headingColor font-semibold'>
                   <span className='text-sm text-red-500'>₹</span>{item?.price}
                 </p>
-                <p className='text-sm text-headingColor font-semibold'>⭐ 5</p>
+                <p className='text-sm text-headingColor font-semibold'>⭐ {item?.rating}</p>
               </div>
 
             </div>

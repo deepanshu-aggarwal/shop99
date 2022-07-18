@@ -19,7 +19,7 @@ const DetailProductPage = () => {
     }
 
     return (
-        <div className='w-full flex flex-row gap-20 justify-center items-center mt-12 h-full flex-wrap'>
+        <div className='w-full flex flex-row gap-20 justify-center items-center h-screen -mt-[5rem] flex-wrap'>
             <div className='h-96 w-96 border rounded-lg mt-2 p-4'>
                 <motion.div
                     className="h-full w-full drop-shadow-2xl"

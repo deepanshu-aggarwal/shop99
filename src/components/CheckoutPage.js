@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useStateValue } from '../context/StateProvider'
 import { Navigate } from 'react-router-dom'
-
+import {actionType} from '../context/reducer'
 
 const CheckoutPage = () => {
-  const [{ user }] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   const [state, setState] = useState({
     firstName: '',
@@ -21,6 +21,8 @@ const CheckoutPage = () => {
   })
   const [cart, setCart] = useState([])
   const [navigate, setNavigate] = useState(false)
+
+
   const handleChange = (e) => {
     let { name, value } = e.target;
     switch (name) {
@@ -70,7 +72,7 @@ const CheckoutPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!state.firstName || !state.lastName || !state.AddressLine1 || !state.AddressLine2 || !state.city || !state.state || !state.zip || !state.phone || !state.delivery) {
+    if (!state.firstName || !state.lastName || !state.AddressLine1 || !state.city || !state.state || !state.zip || !state.phone || !state.delivery) {
       alert('Please fill out all fields')
       return;
     }
@@ -79,7 +81,13 @@ const CheckoutPage = () => {
     }
     else {
       alert('Payement Successful')
+      const orderid  = Math.floor(Math.random() * 1000000)
+      dispatch({
+        type: actionType.SET_CART_ITEMS,
+        cartItems: []
+      })
       localStorage.setItem('cartItems', JSON.stringify([]))
+      localStorage.setItem('orderId', JSON.stringify(orderid))
       setNavigate(true)
     }
   }
@@ -97,7 +105,14 @@ const CheckoutPage = () => {
       name: 'Shopp99',
       description: 'Payment for your order',
       handler: function (response) {
-        alert(response.razorpay_payment_id);
+        const orderid  = Math.floor(Math.random() * 1000000)
+        dispatch({
+          type: actionType.SET_CART_ITEMS,
+          cartItems: []
+        })
+        localStorage.setItem('cartItems', JSON.stringify([]))
+        localStorage.setItem('orderId', JSON.stringify(orderid))
+        setNavigate(true)
       },
       prefill: {
         name: state.firstName,
@@ -116,7 +131,8 @@ const CheckoutPage = () => {
     pay.open();
 
     setTimeout(() => {
-      localStorage.setItem('cartItems', JSON.stringify([]))
+
+      localStorage.setItem('cartItem', JSON.stringify([]))
       setNavigate(true)
     }, 8000)
   }
@@ -133,7 +149,7 @@ const CheckoutPage = () => {
   return (
     <div className='w-full h-screen flex md:justify-around items-start mt-2'>
       {
-        navigate && <Navigate to="/" />
+        navigate && <Navigate to="/success" />
       }
 
       <div className='md:w-[60%] w-full '>
