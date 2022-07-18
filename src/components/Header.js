@@ -18,7 +18,7 @@ const Header = () => {
 
     const login = async () => {
         if (!user) {
-            const { user: { refreshToken, providerData } } = await signInWithPopup(firebaseAuth, provider)
+            const { user: { providerData } } = await signInWithPopup(firebaseAuth, provider)
             dispatch({
                 type: actionType.SET_USER,
                 user: providerData[0]
@@ -61,10 +61,9 @@ const Header = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 200 }}
                         className='flex items-center gap-8 '>
-                        <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out' onClick={() => setIsMenu(false)}>Home</li>
-                        <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out' onClick={() => setIsMenu(false)}>Menu</li>
-                        <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out' onClick={() => setIsMenu(false)}>About Us</li>
-                        <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out' onClick={() => setIsMenu(false)}>Services</li>
+                        <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out' onClick={() => setIsMenu(false)}><Link to='/'>Home</Link></li>
+                        <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out' onClick={() => setIsMenu(false)}><Link to='/about'>About  Us</Link></li>
+                        <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out' onClick={() => setIsMenu(false)}><Link to='/service'>Services</Link></li>
                     </motion.ul>
 
                     <motion.div whileTap={{ scale: .6 }}
@@ -72,7 +71,7 @@ const Header = () => {
                         className='relative flex items-center justify-center'>
                         <MdShoppingCart className='text-textColor text-2xl cursor-pointer' />
                         {cartItems?.length > 0 && (
-                            <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
+                            <div className=" absolute -top-3 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
                                 <p className="text-xs text-white font-semibold">
                                     {cartItems.length}
                                 </p>
@@ -83,7 +82,7 @@ const Header = () => {
                     <div className="relative">
                         <motion.img
                             whileTap={{ scale: .6 }}
-                            src={user ? user.photoURL  : Avatar}
+                            src={user ? user.photoURL : Avatar}
                             alt="userProfile"
                             onClick={login}
                             className='w-8 min-w-[40] h-8 min-h-[40] cursor-pointer drop-shadow-xl rounded-full'
@@ -94,7 +93,7 @@ const Header = () => {
                                     initial={{ opacity: 0, scale: 0.5 }}
                                     animate={{ opacity: 1, scale: .6 }}
                                     exit={{ opacity: 0, scale: .6 }}
-                                    className='w-60 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-4 -right-2'>
+                                    className='w-[18rem] h-[6rem] bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-4 -right-2'>
                                     {user && user.email === "dummygamer18@gmail.com" && (
                                         <Link to='/createItem'>
                                             <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base" onClick={() => setIsMenu(false)}>New Item <MdAdd /></p>
@@ -153,10 +152,9 @@ const Header = () => {
 
                                 <ul
                                     className='flex flex-col '>
-                                    <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out hover:bg-slate-100 px-4 py-2' onClick={() => setIsMenu(false)}>Home</li>
-                                    <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out px-4 py-2 hover:bg-slate-100' onClick={() => setIsMenu(false)}>Menu</li>
-                                    <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out px-4 py-2 hover:bg-slate-100' onClick={() => setIsMenu(false)}>About Us</li>
-                                    <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out px-4 py-2 hover:bg-slate-100' onClick={() => setIsMenu(false)}>Services</li>
+                                    <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out hover:bg-slate-100 px-4 py-2' onClick={() => setIsMenu(false)}><Link to='/'>Home</Link></li>
+                                    <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out px-4 py-2 hover:bg-slate-100' onClick={() => setIsMenu(false)}><Link to='/about'>About  Us</Link></li>
+                                    <li className='text-base text-textColor cursor-pointer hover:text-headingColor transition-all duration-100 ease-in-out px-4 py-2 hover:bg-slate-100' onClick={() => setIsMenu(false)}><Link to='/service'>Services</Link></li>
                                 </ul>
 
                                 <p
