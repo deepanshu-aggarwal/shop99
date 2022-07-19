@@ -13,7 +13,7 @@ const SuccessFull = () => {
   return (
     <div className='w-full h-screen flex justify-center items-center -mt-[7rem] end drop-shadow-md rounded-md'>
 
-      <div className='w-96 border rounded-md flex flex-col justify-start items-center p-2 text-center drop-shadow-sm z-10 bg-white opacity-[.85]'>
+      <div className='md:w-96 w-[85%] border rounded-md flex flex-col justify-start items-center p-2 text-center drop-shadow-sm z-10 bg-white opacity-[.85]'>
         <motion.div whileHover={{ scale: 1.45 }} className='mb-2'>
           <TiTick className='text-green-500 text-[2.5rem]   ' />
         </motion.div>

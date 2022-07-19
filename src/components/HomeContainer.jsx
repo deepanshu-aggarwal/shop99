@@ -31,10 +31,9 @@ const HomeContainer = () => {
         </p>
 
         <p className="text-base text-textColor text-center md:text-left md:w-[80%]">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima velit
-          eaque fugit distinctio est nam voluptatum architecto, porro iusto
-          deserunt recusandae ipsa minus eos sunt, dolores illo repellat facere
-          suscipit!
+          <span className="font-semibold ">Your coffee Might go cold, But your Biryani will always be hot.</span>
+          <br />
+          From chocolate to coffee, we have everything you need to make your day.
         </p>
 
         <button

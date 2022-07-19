@@ -142,7 +142,7 @@ const CheckoutPage = () => {
   }, [])
 
   useEffect(() => {
-    const total = cart.reduce((acc, curr) => acc + parseInt(curr.price), 0)
+    const total = cart.reduce((acc, curr) => acc + parseInt(curr.price) * curr?.qty, 0)
     setState({ ...state, amount: total })
   }, [cart])
 
