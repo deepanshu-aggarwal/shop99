@@ -4,7 +4,7 @@ import { HiInformationCircle } from 'react-icons/hi'
 
 const About = () => {
   return (
-    <div className='w-full h-screen flex justify-center items-center -mt-[7rem] bg-gradient-to-b from-orange-500 to-yellow-300 backdrop-blur-3xl drop-shadow-md rounded-md background-opacity-[.1] '>
+    <div className='w-full h-screen flex justify-center items-center -mt-[7rem] bg-gradient-to-b from-orange-500 to-yellow-300 backdrop-blur-3xl drop-shadow-md rounded-md background-opacity-[.1] p-[1rem]'>
       <div className='w-[50rem] flex flex-col justify-start items-center text-center border rounded-md p-3 '>
         <HiInformationCircle  className='text-white text-3xl'/>
         <hr className='w-[95%] m-3' />
